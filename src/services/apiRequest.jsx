@@ -2,24 +2,25 @@ import axios from 'axios';
 
 const API = axios.create({ baseURL: `https://api.github.com`});
 
-async function getUsers(dados, user) {
+async function getAllUsers(dados) {
    
-    return await API.post(`/users/${user}`, dados);
+    return await API.get(`/users`, dados);
+} 
+
+async function getUsers(user, dados) {
+   
+    return await API.get(`/users/${user}`, dados);
 } 
 
 async function getRepositories(dados, user) {
    
-    return await API.post(`/users/${user}/repos`, dados);
+    return await API.get(`/users/${login}/${repos}`, dados);
 } 
 
- 
-
-
-
-
 const requests = {
+    getAllUsers,
     getUsers,
-    
+    getRepositories,
 }
 
 export default requests;

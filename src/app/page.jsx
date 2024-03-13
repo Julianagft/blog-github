@@ -22,12 +22,12 @@ export default function Home({children}) {
     token: {borderRadiusLG },
   } = theme.useToken();
 
-  const router = useRouter(); 
-  const [currentPage, setCurrentPage] = useState('homePage');
+  // const router = useRouter(); 
+  // const [currentPage, setCurrentPage] = useState('homePage');
 
-  useEffect(() => {
-    router.push('/homePage'); 
-  }, []);
+  // useEffect(() => {
+  //   router.push('/homePage'); 
+  // }, []);
 
   return (
     <div className='h-scre'>
@@ -79,19 +79,18 @@ export default function Home({children}) {
               }}
             />
           </Header>
-          <Content
+          {/* <Content
             style={{
               margin: '24px 16px',
               padding: 24,
               minHeight: 280,
-              background: 'black',
+              background:'black',
               borderRadius: borderRadiusLG,
             }}
           >
-            <Main>{children}</Main>
             
-          </Content>
-
+          </Content> */}
+            <Main>{children}</Main>
           <Footer style={{backgroundColor:'#121212', color:'white'}}>
             <h3 className='text-center'>Criado por <a href='https://github.com/Julianagft'>Maria Juliana</a></h3>
           </Footer>
