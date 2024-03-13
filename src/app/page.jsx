@@ -66,7 +66,7 @@ export default function Home({children}) {
          
         </Sider>
         <Layout>
-          <Header style={{ padding: 0, background: 'black' }}>
+          <Header style={{ padding: 0, background: '#121212' }}>
             <Button
               type="text"
               icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -92,7 +92,7 @@ export default function Home({children}) {
             
           </Content>
 
-          <Footer style={{backgroundColor:'black', color:'white'}}>
+          <Footer style={{backgroundColor:'#121212', color:'white'}}>
             <h3 className='text-center'>Criado por <a href='https://github.com/Julianagft'>Maria Juliana</a></h3>
           </Footer>
         </Layout>
