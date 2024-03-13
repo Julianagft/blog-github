@@ -5,7 +5,9 @@ import requests from "@/services/apiRequest";
 
 import { FormControl, OutlinedInput, InputAdornment} from '@mui/material';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
+import { Avatar, Card } from 'antd';
 
+const { Meta } = Card;
 
 export default function UserPage() {
     const [formData, setFormData] =useState({"login": ""})
@@ -31,7 +33,7 @@ export default function UserPage() {
     return (
         <div className='w-full h-full flex flex-col justify-center items-center flex-wrap p-8 gap-5 overflow-hidden text-center'>
             <div>
-                <h1 className="text-2xl font-bold text-purple-800">Procure um usuário</h1>
+                <h1 className="text-4xl font-bold text-purple-800">Pesquise um Usuário</h1>
             </div>
             <div className="w-3/5 flex flex-col items-center">
             <FormControl sx={{ m: 1, width:'50vw', color:'blue' }}>
@@ -47,15 +49,19 @@ export default function UserPage() {
             </div>
 
             <button onClick={handleGetUser}>Buscar Usuário</button>
-            <ul>
-                {userData && (
-                    <li key={userData.id}>
-                        <h4 className="font-bold">
-                            <Link href={`/userPage/${userData.id}`}>{userData.login}</Link>
-                        </h4>
-                    </li>
-                )}
-            </ul>
+            {
+                userData && (
+                    <Link href={`/userPage/${userData.id}`}>
+                    <Card style={{ width: 400, marginTop: 16 }} >
+                        <Meta
+                        style={{color:'#E914B7'}}
+                        avatar={<Avatar size={64} src={userData.avatar_url} />}
+                        title={userData.name}
+                        description={userData.login}
+                        />
+                    </Card>
+                    </Link>
+            )}
         </div>
     )
 }

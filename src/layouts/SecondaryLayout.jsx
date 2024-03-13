@@ -16,7 +16,7 @@ export default function SecondaryLayout({children}) {
               margin: '24px 16px',
               padding: 24,
               minHeight: 280,
-              background: 'white',
+              background: '#F2F2F2',
               borderRadius: borderRadiusLG,
             }}
           >
