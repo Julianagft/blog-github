@@ -5,7 +5,7 @@ import requests from "@/services/apiRequest";
 
 import { FormControl, OutlinedInput, InputAdornment} from '@mui/material';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
-import { Avatar, Card } from 'antd';
+import { Avatar, Card, Button } from 'antd';
 
 const { Meta } = Card;
 
@@ -47,8 +47,8 @@ export default function UserPage() {
                 />
             </FormControl>
             </div>
-
-            <button onClick={handleGetUser}>Buscar Usuário</button>
+            {/* <div><Button color="secondary" variant="contained" ></Button></div> */}
+            <Button type="primary" value="large" style={{backgroundColor: '#E914B7', fontWeight:'bold'}} onClick={handleGetUser}>Buscar Usuário</Button>
             {
                 userData && (
                     <Link key={userData.id} href={`/userPage/${userData.login}`}>
