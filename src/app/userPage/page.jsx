@@ -47,7 +47,6 @@ export default function UserPage() {
                 />
             </FormControl>
             </div>
-            {/* <div><Button color="secondary" variant="contained" ></Button></div> */}
             <Button type="primary" value="large" style={{backgroundColor: '#E914B7', fontWeight:'bold'}} onClick={handleGetUser}>Buscar Usuário</Button>
             {
                 userData && (
