@@ -1,0 +1,12 @@
+{
+    "name": "blog-github",
+    "dockerFile": "Dockerfile",
+    "settings": {},
+    "extensions": [],
+    "forwardPorts": [],
+    "postCreateCommand": "",
+    "remoteUser": "vscode",
+    "features": {
+      "ghcr.io/devcontainers/features/github-cli:1": {}
+    }
+  }

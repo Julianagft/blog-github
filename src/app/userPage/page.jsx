@@ -11,7 +11,7 @@ const { Meta } = Card;
 
 export default function UserPage() {
     const [formData, setFormData] =useState({"login": ""})
-    const [userData, setUserData] = useState({});
+    const [userData, setUserData] = useState(null);
 
 
     const handleInputChange = (event) => {
@@ -41,7 +41,7 @@ export default function UserPage() {
                     color="secondary"
                     id="outlined-adornment-amount"
                     startAdornment={<InputAdornment position="start"><SearchSharpIcon color="secondary" /></InputAdornment>}
-                    focused
+                    
                     lebel="procurar"
                     onChange={handleInputChange}
                 />
@@ -51,11 +51,10 @@ export default function UserPage() {
             <button onClick={handleGetUser}>Buscar Usuário</button>
             {
                 userData && (
-                    <Link key={userData.id} href={`/userPage/${userData.id}`}>
-                    <Card style={{ width: 400, marginTop: 16 }} >
+                    <Link key={userData.id} href={`/userPage/${userData.login}`}>
+                    <Card style={{ width: 400, marginTop: 16, fontSize:'16px', backgroundColor:'#e2dfdfeb'}} >
                         <Meta
-                        style={{color:'#E914B7'}}
-                        avatar={<Avatar size={64} src={userData.avatar_url} />}
+                        avatar={<Avatar size={90} src={userData.avatar_url} />}
                         title={userData.name}
                         description={userData.login}
                         />
