@@ -11,7 +11,7 @@ const { Meta } = Card;
 
 export default function UserPage() {
     const [formData, setFormData] =useState({"login": ""})
-    const [userData, setUserData] = useState(null);
+    const [userData, setUserData] = useState({});
 
 
     const handleInputChange = (event) => {
@@ -21,7 +21,7 @@ export default function UserPage() {
 
     const handleGetUser = async () =>  {
         try{
-            const response = await requests.getUsers(formData.login)
+            const response = await requests.getUser(formData.login)
             console.log(response.data)
             setUserData(response.data);
         } catch(error) {
@@ -51,7 +51,7 @@ export default function UserPage() {
             <button onClick={handleGetUser}>Buscar Usuário</button>
             {
                 userData && (
-                    <Link href={`/userPage/${userData.id}`}>
+                    <Link key={userData.id} href={`/userPage/${userData.id}`}>
                     <Card style={{ width: 400, marginTop: 16 }} >
                         <Meta
                         style={{color:'#E914B7'}}

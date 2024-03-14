@@ -7,7 +7,7 @@ async function getAllUsers(dados) {
     return await API.get(`/users`, dados);
 } 
 
-async function getUsers(user, dados) {
+async function getUser(user, dados) {
    
     return await API.get(`/users/${user}`, dados);
 } 
@@ -19,7 +19,7 @@ async function getRepositories(dados, user) {
 
 const requests = {
     getAllUsers,
-    getUsers,
+    getUser,
     getRepositories,
 }
 
