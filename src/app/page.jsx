@@ -22,12 +22,12 @@ export default function Home({children}) {
     token: {borderRadiusLG },
   } = theme.useToken();
 
-  // const router = useRouter(); 
-  // const [currentPage, setCurrentPage] = useState('homePage');
+  const router = useRouter(); 
+  const [currentPage, setCurrentPage] = useState('homePage');
 
-  // useEffect(() => {
-  //   router.push('/homePage'); 
-  // }, []);
+  useEffect(() => {
+    router.push('/homePage'); 
+  }, []);
 
   return (
     <div className='h-scre'>
