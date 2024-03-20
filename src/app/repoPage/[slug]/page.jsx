@@ -1,20 +1,22 @@
 'use client'
 import { useState, useEffect } from "react";
 import requests from "@/services/apiRequest";
+import formatDate from "@/services/dateConverter";
 
-import { Collapse} from 'antd';
 import { Accordion, AccordionSummary, AccordionDetails, Fade } from '@mui/material';
 import GradeRoundedIcon from '@mui/icons-material/GradeRounded';
 import DeviceHubRoundedIcon from '@mui/icons-material/DeviceHubRounded';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-
-
-const content = 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, rem?'
+import AccessTimeRoundedIcon from '@mui/icons-material/AccessTimeRounded';
+import AccessTimeFilledRoundedIcon from '@mui/icons-material/AccessTimeFilledRounded';
+import CodeRoundedIcon from '@mui/icons-material/CodeRounded';
+import BookRoundedIcon from '@mui/icons-material/BookRounded';
 
 export default function repoPage({params}) {
     
     const [userData, setUserData] = useState({});
     const [repoData, setRepoData] = useState([]);
+    const [repoLanguages, setRepoLanguages] = useState({})
 
     // REQUISIÇÃO API
 
@@ -35,8 +37,9 @@ export default function repoPage({params}) {
         if (params && params.slug) {
             fetchData();
         }
-    }, [params]);
+    }, []);
 
+    
     // Configurações de Estilo
 
     const [expandedIndex, setExpandedIndex] = useState(null);
@@ -68,21 +71,21 @@ export default function repoPage({params}) {
                             </AccordionSummary>
                             <AccordionDetails>
 
-                            <p className="font-normal"><strong>Descrição:</strong> {repo.description}</p>
-                            <p><GradeRoundedIcon style={{ color: '#E914B7' }} /><strong>Estrelas:</strong> {repo.forks_count}</p>
-                            <p><DeviceHubRoundedIcon style={{ color: '#E914B7' }} /><strong>Forks:</strong>{repo.forks_count}</p>
-                            <p>Criado em : {repo.created_at}</p>
-                            <p>Última atualização: {repo.updated_at}</p>
-                            <p className="font-bold">Linguagens mais usadas:</p>
-                            <a href={repo.html_url} alt='link repositorie' target="_blank">Visite o Repositório</a>
+                            <div className="font-normal">
+                                <p ><strong>Descrição:</strong> {repo.description}</p>
+                                <p><GradeRoundedIcon style={{ color: '#E914B7', marginRight:'10px' }} /><strong>Estrelas:</strong> {repo.forks_count}</p>
+                                <p><DeviceHubRoundedIcon style={{ color: '#E914B7', marginRight:'10px' }} /><strong>Forks:</strong> {repo.forks_count}</p>
+                                <p><AccessTimeRoundedIcon style={{ color: '#E914B7', marginRight:'10px' }} /><strong>Criado em:</strong> {formatDate(repo.created_at)}</p>
+                                <p><AccessTimeFilledRoundedIcon style={{ color: '#E914B7', marginRight:'10px' }} /><strong>Última atualização:</strong> {formatDate(repo.updated_at)}</p>
+                                <p><CodeRoundedIcon style={{ color: '#E914B7', marginRight:'10px' }} /><strong>Linguagem mais utilizada:</strong> {repo.language}</p>
+                                
+                                <p><BookRoundedIcon style={{ color: '#E914B7', marginRight:'10px' }} /><a className="hover:text-purple-700 font-bold hover:underline" href={repo.html_url} alt='link repositorie' target="_blank">Visite o Repositório</a></p>
+                            </div>
 
                             </AccordionDetails>
                         </Accordion>
                     </div> 
                 ))}
-    
-            
-            
         </div>
     )
 }

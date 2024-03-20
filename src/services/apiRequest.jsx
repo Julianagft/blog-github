@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const API = axios.create({ baseURL: `https://api.github.com`});
 
-async function getAllUsers(dados) {
+async function getAllUsers(query, dados) {
    
-    return await API.get(`/users`, dados);
+    return await API.get(`/search/users?q=${query}`, dados);
 } 
 
 async function getUser(user, dados) {
