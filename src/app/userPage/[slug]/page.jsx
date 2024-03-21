@@ -61,8 +61,8 @@ export default function UnicUserPage({params}) {
       }
 
     const rows = [
-        createData('Repositórios',userData.public_repos, <Link href={`../../repoPage/${userData.login}`}>visite os repositórios</Link>),
-        createData('Seguindores', userData.followers, <Link href={`https://github.com/${userData.login}`}>siga {userData.name}</Link>),
+        createData('Repositórios',userData.public_repos, <Link className="hover:text-purple-700 hover:underline " href={`../../repoPage/${userData.login}`}>Visite os repositórios</Link>),
+        createData('Seguidores', userData.followers, <Link className="hover:text-purple-700 hover:underline " target="_blank" href={`https://github.com/${userData.login}`}>Siga {userData.name}</Link>),
         createData('Seguindo', userData.following),
       ];
 
@@ -79,12 +79,12 @@ export default function UnicUserPage({params}) {
                     />
                     <div className="flex flex-col gap-4">
                         <h1 className="text-2xl font-bold">{userData.name}</h1>
-                        <p>{userData.bio}</p>
+                        <p className="text-lg" >{userData.bio}</p>
                     </div>
 
-                    <div className="flex flex-col gap-5 font-bold">
+                    <div className="flex flex-col gap-5">
                             <TableContainer >
-                                <Table sx={{ width: '60vw', fontWeight:'bold', margin:'auto' }} aria-label="customized table">
+                                <Table sx={{ width: '60vw', fontWeight:'bold', margin:'auto', color:'white' }} aria-label="customized table">
                                     <TableHead>
                                     <TableRow>
                                         <StyledTableCell><UserOutlined style={{color:'#E914B7', marginRight:'5px'}} /> INFOS USUÁRIO</StyledTableCell>

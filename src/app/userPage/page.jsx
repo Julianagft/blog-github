@@ -40,6 +40,7 @@ export default function SearchUserPage() {
             <div className="w-3/5 flex flex-col items-center">
                 <FormControl sx={{ m: 1, width:'50vw', color:'blue' }}>
                     <OutlinedInput
+                        sx={{border:'1px solid #6B21A8', color:'#E914B7', backgroundColor:'#F2F2F2', borderRadius:'10px'}}
                         color="secondary"
                         id="outlined-adornment-amount"
                         startAdornment={<InputAdornment position="start"><SearchSharpIcon color="secondary" /></InputAdornment>}
@@ -48,25 +49,30 @@ export default function SearchUserPage() {
                     />
                 </FormControl>
             </div>
-            {users.length > 0 && (
-                <div className="w-3/5 max-h-screen flex flex-col items-center overflow-auto">
-                    { users.map((user, index) => (
+
+            <div className="w-3/5 max-h-screen flex flex-col items-center overflow-auto">
+                {users.length > 0 ? (
+                    users.map((user, index) => (
                         <Link key={user.id} href={`/userPage/${user.login}`}>
                             <Card
                                 key={index}
-                                style={{ width: 400, marginTop: 16, fontSize:'16px', backgroundColor:'#e2dfdfeb'}}
+                                style={{ width: 400, marginTop: 16, fontSize:'16px', backgroundColor:'#F2F2F2', color:'#E914B7'}}
                                 onClick={() => setFormData(user.login)}
                             >
                                 <Meta
+                                    style={{fontWeight:'bold'}}
                                     avatar={<Avatar size={90} src={user.avatar_url} />}
-                                    title={user.name || ''} // Verifica se user.name está definido, caso contrário, exibe 'Nome não disponível'
-                                    description={user.login}
+                                    title={user.login || ''} 
+                                    description={user.type}
                                 />
                             </Card>
                         </Link>
-                    ))}
-                </div>
-            )}
+                    ))
+                ) : query !== '' &&  (
+                    <p className="text-white text-lg">Buscando...</p>
+                  )}
+            </div>
+            
         </div>
     );
 }

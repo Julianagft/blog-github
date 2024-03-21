@@ -16,7 +16,6 @@ export default function RootLayout({ children }) {
     <html lang="pt-br">
       <body className={montserrat.className}> 
         <Home>{children}</Home>
-        
       </body>
     </html>
   );

@@ -26,7 +26,7 @@ export default function repoPage({params}) {
                 const userResponse = await requests.getUser(params.slug);
                 setUserData(userResponse.data);
                 
-                const repoResponse = await requests.getAllRepos(params.slug);
+                const repoResponse = await requests.getUserRepos(params.slug);
                 setRepoData(repoResponse.data);
 
             } catch (error) {

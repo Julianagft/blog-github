@@ -12,29 +12,21 @@ async function getUser(user, dados) {
     return await API.get(`/users/${user}`, dados);
 } 
 
-async function getAllRepos(user, dados) {
+async function getUserRepos(user, dados) {
    
     return await API.get(`/users/${user}/repos`, dados);
 } 
 
-async function getRepositorie(user, name, dados) {
+async function getAllRepos(query, dados) {
    
-    return await API.get(`/repos/${user}/${name}`, dados);
+    return await API.get(`/search/repositories?q=${query}`, dados);
 }
-
-async function getRepoLanguages(user, name, dados) {
-   
-    return await API.get(`/repos/${user}/${name}/languages`, dados);
-}
-
-
 
 const requests = {
     getAllUsers,
     getUser,
+    getUserRepos,
     getAllRepos,
-    getRepositorie,
-    getRepoLanguages,
 }
 
 export default requests;

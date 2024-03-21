@@ -18,16 +18,26 @@ const { Header, Sider, Content, Footer } = Layout;
 export default function Home({children}) {
   const [collapsed, setCollapsed] = useState(false);
   
+  const [currentPage, setCurrentPage] = useState('');
+  const [initialLoad, setInitialLoad] = useState(true); // Estado para carregar a pagina apenas uma vez 
+  const router = useRouter();
+
+  useEffect(() => {
+    // Verifica se é a primeira renderização
+    if (initialLoad) {
+      router.push('/homePage'); // Redireciona para a homePage apenas na primeira renderização
+      setInitialLoad(false); // Marca que o carregamento inicial já foi feito
+    } else {
+      const currentPath = router.pathname;
+      setCurrentPage(currentPath);
+    }
+  }, []); 
+
+  // Conf de estilo
   const {
     token: {borderRadiusLG },
   } = theme.useToken();
 
-  const router = useRouter(); 
-  const [currentPage, setCurrentPage] = useState('homePage');
-
-  useEffect(() => {
-    router.push('/homePage'); 
-  }, []);
 
   return (
     <div className='h-scre'>
@@ -79,7 +89,10 @@ export default function Home({children}) {
               }}
             />
           </Header>
-          {/* <Content
+          {/* <Content>
+            
+          </Content> */}
+          <Content
             style={{
               margin: '24px 16px',
               padding: 24,
@@ -88,9 +101,10 @@ export default function Home({children}) {
               borderRadius: borderRadiusLG,
             }}
           >
-            
-          </Content> */}
             <Main>{children}</Main>
+          </Content>
+          
+            
           <Footer style={{backgroundColor:'#121212', color:'white'}}>
             <h3 className='text-center'>Criado por <a href='https://github.com/Julianagft'>Maria Juliana</a></h3>
           </Footer>
