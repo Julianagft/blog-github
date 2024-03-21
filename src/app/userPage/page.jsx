@@ -5,7 +5,7 @@ import requests from "@/services/apiRequest";
 
 import { FormControl, OutlinedInput, InputAdornment} from '@mui/material';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
-import { Avatar, Card, Button } from 'antd';
+import { Avatar, Card} from 'antd';
 
 const { Meta } = Card;
 

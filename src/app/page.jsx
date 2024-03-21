@@ -106,7 +106,7 @@ export default function Home({children}) {
           
             
           <Footer style={{backgroundColor:'#121212', color:'white'}}>
-            <h3 className='text-center'>Criado por <a href='https://github.com/Julianagft'>Maria Juliana</a></h3>
+            <h3 className='text-center'>Criado por <a className='hover:text-purple-700' href='https://github.com/Julianagft'>Maria Juliana</a></h3>
           </Footer>
         </Layout>
       </Layout>
